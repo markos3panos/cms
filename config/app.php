@@ -84,9 +84,10 @@ return [
 
     'faker_locale' => env('APP_FAKER_LOCALE', 'en_US'),
 
+
     'available_locales' => [
-        'English' => 'en',
-        'Greek' => 'el',
+        'en' => '🇬🇧 English',
+        'el' => '🇬🇷 Greek',
     ],
 
     /*

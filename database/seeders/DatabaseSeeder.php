@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Language;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,11 +13,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // Create Admin user if not exists
+        User::firstOrCreate(
+            ['email' => 'markospapapanos@gmail.com'],
+            ['name' => 'Admin']
+        );
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // Create Languages if they don't exist
+        $languages = [
+            ['id' => 1, 'code' => 'el', 'name' => 'Greek'],
+            ['id' => 2, 'code' => 'en', 'name' => 'English'],
+        ];
+
+        foreach ($languages as $lang) {
+            Language::firstOrCreate(['id' => $lang['id']], $lang);
+        }
     }
 }
